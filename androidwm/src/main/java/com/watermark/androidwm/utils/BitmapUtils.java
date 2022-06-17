@@ -27,10 +27,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Environment;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.Base64;
+import android.util.Log;
 import android.util.TypedValue;
 
 import com.watermark.androidwm.bean.WatermarkImage;
@@ -43,7 +44,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import timber.log.Timber;
 
 /**
  * Util class for operations with {@link Bitmap}.
@@ -174,7 +174,7 @@ public class BitmapUtils {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
             return BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
         } catch (Exception e) {
-            Timber.e(e.toString());
+//            Timber.e(e.toString());
             return null;
         }
     }
@@ -185,7 +185,7 @@ public class BitmapUtils {
     public static void saveAsPNG(Bitmap inputBitmap, String filePath, boolean withTime) {
         String sdStatus = Environment.getExternalStorageState();
         if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) {
-            Timber.e("SD card is not available/writable right now.");
+//            Log.e("SD card is not available/writable right now.");
         }
 
         @SuppressLint("SimpleDateFormat") String timeStamp =
@@ -201,14 +201,14 @@ public class BitmapUtils {
             inputBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
             // PNG is a lossless format, the compression factor (100) is ignored
         } catch (Exception e) {
-            Timber.e(e.toString());
+//            Timber.e(e.toString());
         } finally {
             try {
                 if (out != null) {
                     out.close();
                 }
             } catch (IOException e) {
-                Timber.e(e.toString());
+//                Timber.e(e.toString());
             }
         }
     }

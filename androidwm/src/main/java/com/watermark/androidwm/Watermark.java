@@ -24,8 +24,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.watermark.androidwm.bean.AsyncTaskParams;
@@ -40,6 +38,9 @@ import java.util.List;
 
 import static com.watermark.androidwm.utils.BitmapUtils.resizeBitmap;
 import static com.watermark.androidwm.utils.BitmapUtils.textAsBitmap;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * The main class for watermark processing library.
